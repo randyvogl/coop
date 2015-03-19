@@ -15,6 +15,16 @@
 </head>
 
 <body>
+     <!-- On/Off button's picture -->
+	 <?php
+	 //this php script generate the first page in function of the gpio's status
+	 $status = array (0, 0, 0, 0, 0, 0, 0, 0);
+	 for ($i = 0; $i < count($status); $i++) {
+		//set the pin's mode to output and read them
+		system("gpio mode ".$i." out");
+		exec ("gpio read ".$i, $status[$i], $return );
+	 }
+	?>
 <div id="topbar">
 	<div id="title">Automated Chicken Coop</div>
 </div>
@@ -37,16 +47,26 @@
 		</li>
 		<li class="select"><select name="d">
 			<option value="1">Automatically Turn on/off Lights</option>
-			<option value="2">Permanant Override</option>
+			<option value="2">Permanent Override</option>
 			<option value="3">Temporary Override</option>
 			</select><span class="arrow"></span> </li>
 		<li class="checkbox"><span class="name">Turn Light On </span>
-		<input name="remember" type="checkbox" /> </li>
+		<?php
+			if ($status[0][0] == 0 ) {
+				echo('<input name="remember" type="checkbox" /> </li>');
+			}
+			elseif ($status[0][0] == 1 ) {
+				echo('<input name="remember" type="checkbox" checked/> </li>');
+			}
+			else {
+				echo('</li>');
+			}
+		?>
 		<li class="checkbox"><span class="name">Open Door(On) / Close Door (Off)</span>
 		<input name="remember" type="checkbox" /> </li>
 		<li class="select"><select name="d">
 			<option value="1">Automatically Turn on/off Heat Lamps</option>
-			<option value="2">Permanant Override</option>
+			<option value="2">Permanent Override</option>
 			<option value="3">Temporary Override</option>
 			</select><span class="arrow"></span> </li>
 		<li class="checkbox"><span class="name">Turn Heat Lamp On </span>
@@ -59,8 +79,9 @@
 </div>
 <div id="footer">
 	<!-- Support iWebKit by sending us traffic; please keep this footer on your page, consider it a thank you for my work :-) -->
-	<a class="noeffect" href="http://snippetspace.com">iPhone site powered by iWebKit</a></div>
-
+	<a class="noeffect" href="http://snippetspace.com">iPhone site powered by Automated Pet Products, LLC</a></div>
+	 <!-- javascript -->
+	 <script src="/javascript/gpioscript.js"></script>
 </body>
 
 </html>

@@ -59,8 +59,15 @@
 				echo('<input id="button_0" alt="on" name="remember" type="checkbox" checked/> </li>');
 			}
 		?>
-		<li class="checkbox"><span class="name">Open Door(On) / Close Door (Off)</span>
-		<input name="remember" type="checkbox" /> </li>
+		<li class="checkbox"><span class="name">Door Status</span>
+		<?php
+			if ($status[1][0] == 0 ) {
+				echo('<input id="button_1" alt="off" name="remember" type="checkbox" /> </li>');
+			}
+			if ($status[1][0] == 1 ) {
+				echo('<input id="button_1" alt="on" name="remember" type="checkbox" checked/> </li>');
+			}
+		?>
 		<li class="select"><select name="d">
 			<option value="1">Automatically Turn on/off Heat Lamps</option>
 			<option value="2">Permanent Override</option>
@@ -68,11 +75,11 @@
 			</select><span class="arrow"></span> </li>
 		<li class="checkbox"><span class="name">Turn Heat Lamp On </span>
 		<?php
-			if ($status[1][0] == 0 ) {
-				echo('<input id="button_1" alt="off" name="remember" type="checkbox" /> </li>');
+			if ($status[2][0] == 0 ) {
+				echo('<input id="button_2" alt="off" name="remember" type="checkbox" /> </li>');
 			}
-			if ($status[1][0] == 1 ) {
-				echo('<input id="button_1" alt="on" name="remember" type="checkbox" checked/> </li>');
+			if ($status[2][0] == 1 ) {
+				echo('<input id="button_2" alt="on" name="remember" type="checkbox" checked/> </li>');
 			}
 		?>
 		<li class="menu"><a href="">

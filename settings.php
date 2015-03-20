@@ -33,7 +33,7 @@
 		<li class="menu"><a href="">
 		<span class="name">Sensor Setup</span><span class="arrow"></span></a></li>
 		<li class="menu"><a href="">
-		<span class="name">aBOUT</span><span class="arrow"></span></a></li>
+		<span class="name">About</span><span class="arrow"></span></a></li>
 	</ul>
 	
 </div>

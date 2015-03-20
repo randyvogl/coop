@@ -14,7 +14,7 @@ var button_7 = document.getElementById("button_7");
 function change_pin (pin, status) {
 	//this is the http request
 	var request = new XMLHttpRequest();
-	request.open( "GET" , "gpio.php?pin=" + pin + "&status=" + status );
+	request.open( "GET" , "../gpio/gpio.php?pin=" + pin + "&status=" + status );
 	request.send(null);
 	//receiving information
 	request.onreadystatechange = function () {
@@ -39,7 +39,7 @@ button_0.addEventListener("click", function () {
 		var new_status = change_pin ( 0, 0);
 		if (new_status !== "fail") { 
 			button_0.alt = "on"
-			button_0.src = "data/img/green/green_0.jpg"; 
+			button_0.checked = true;
 			return 0;
 			}
 		}
@@ -49,7 +49,7 @@ button_0.addEventListener("click", function () {
 		var new_status = change_pin ( 0, 1);
 		if (new_status !== "fail") { 
 			button_0.alt = "off"
-			button_0.src = "data/img/red/red_0.jpg"; 
+			button_0.checked = false;
 			return 0;
 			}
 		}
@@ -62,7 +62,7 @@ button_1.addEventListener("click", function () {
 		var new_status = change_pin ( 1, 0);
 		if (new_status !== "fail") { 
 			button_1.alt = "on"
-			button_1.src = "data/img/green/green_1.jpg"; 
+			button_1.checked = true;
 			return 0;
 			}
 		}
@@ -72,7 +72,7 @@ button_1.addEventListener("click", function () {
 		var new_status = change_pin ( 1, 1);
 		if (new_status !== "fail") { 
 			button_1.alt = "off"
-			button_1.src = "data/img/red/red_1.jpg"; 
+			button_1.checked = false;
 			return 0;
 			}
 		}

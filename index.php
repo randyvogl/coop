@@ -53,13 +53,10 @@
 		<li class="checkbox"><span class="name">Turn Light On </span>
 		<?php
 			if ($status[0][0] == 0 ) {
-				echo('<input name="remember" type="checkbox" /> </li>');
+				echo('<input id="button_0" alt="off" name="remember" type="checkbox" /> </li>');
 			}
-			elseif ($status[0][0] == 1 ) {
-				echo('<input name="remember" type="checkbox" checked/> </li>');
-			}
-			else {
-				echo('</li>');
+			if ($status[0][0] == 1 ) {
+				echo('<input id="button_0" alt="on" name="remember" type="checkbox" checked/> </li>');
 			}
 		?>
 		<li class="checkbox"><span class="name">Open Door(On) / Close Door (Off)</span>
@@ -70,7 +67,14 @@
 			<option value="3">Temporary Override</option>
 			</select><span class="arrow"></span> </li>
 		<li class="checkbox"><span class="name">Turn Heat Lamp On </span>
-		<input name="remember" type="checkbox" /> </li>
+		<?php
+			if ($status[1][0] == 0 ) {
+				echo('<input id="button_1" alt="off" name="remember" type="checkbox" /> </li>');
+			}
+			if ($status[1][0] == 1 ) {
+				echo('<input id="button_1" alt="on" name="remember" type="checkbox" checked/> </li>');
+			}
+		?>
 		<li class="menu"><a href="">
 		<span class="name">Chicken Cam</span><span class="arrow"></span></a></li>
 		<li class="menu"><a href="faq.php">
@@ -81,7 +85,7 @@
 	<!-- Support iWebKit by sending us traffic; please keep this footer on your page, consider it a thank you for my work :-) -->
 	<a class="noeffect" href="http://snippetspace.com">iPhone site powered by Automated Pet Products, LLC</a></div>
 	 <!-- javascript -->
-	 <script src="/javascript/gpioscript.js"></script>
+	 <script src="javascript/gpioscript.js"></script>
 </body>
 
 </html>

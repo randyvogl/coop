@@ -84,8 +84,8 @@
 		?>
 		<li class="menu"><a href="">
 		<span class="name">Chicken Cam</span><span class="arrow"></span></a></li>
-		<img alt="list" src="thumbs/settings.png" /><li class="menu"><a href="settings.php">
-		<span class="name">Settings</span><span class="arrow"></span></a></li>
+		<li class="menu"><a href="settings.php">
+		<img alt="list" src="thumbs/settings.png" /><span class="name">Settings</span><span class="arrow"></span></a></li>
 		<li class="menu"><a href="faq.php">
 		<span class="name">FAQ's</span><span class="arrow"></span></a></li>
 	</ul>

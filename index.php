@@ -12,6 +12,51 @@
 <link href="pics/Chicken-icon.png" rel="apple-touch-startup-image" />
 <meta content="chickens, controller, remote access" name="keywords" />
 <meta content="Control your chicken coop remotely" name="description" />
+<style>
+	body {
+	text-align: center;
+	}
+	   
+	#g1, #g2 {
+	width:100px; height:80px;
+	display: inline-block;
+	margin: 1em;
+	}
+</style>
+<script src="javascript/justguage/raphael.2.1.0.min.js"></script>
+<script src="javascript/justguage/justgage.1.0.1.min.js"></script>
+<script src="resources/js/jquery-1.11.2.js"></script>
+<script>
+      var g1, g2;
+      <?php $inside = exec('python resources/ajax/thermometer.py'); ?>
+      window.onload = function(){
+        var g1 = new JustGage({
+          id: "g1", 
+          value: <?php echo $inside; ?>, 
+          min: 0,
+          max: 120,
+	  levelColors : ["#ff0000", "#f9c802","#a9d70b","#f9c802","#ff0000"],
+          title: "Outside Temperature",
+          label: "Temp (F)"
+        });
+        
+        var g2 = new JustGage({
+          id: "g2", 
+          value: <?php echo $inside; ?>, 
+          min: 0,
+          max: 120,
+	  levelColors : ["#ff0000", "#f9c802","#a9d70b","#f9c802","#ff0000"],
+          title: "Inside Temperature",
+          label: "Temp (F)"
+        });
+      
+        setInterval(function() {
+          	$.get('resources/ajax/tempReset.php', function(newValue) { g1.refresh(newValue);});
+		$.get('resources/ajax/tempReset.php', function(newValue) { g2.refresh(newValue);});
+        }, 1);
+      };
+</script>
+
 </head>
 
 <body>
@@ -32,18 +77,18 @@
 	<span class="graytitle">Status Information</span>
 	<ul class="pageitem">
 		<li class="textbox">
-		<p>Current Date/Time:</p>
-		<p>Outside Temperature:</p>
-		<p>Inside Temperature:</p>
+		<p>Current Date/Time: <?php echo date("m.d.y, g:i a");?></p>
 		<p>Food Status:</p>
 		<p>Water Status:</p>
 		<p>Door Status:</p>
 		</li>
+		<div id="g1"></div>
+    		<div id="g2"></div>
 	</ul>
 	<span class="graytitle">Features</span>
 	<ul class="pageitem">
-		<li class="textbox"><span class="header">Automate Chicken Coop</span><p>
-		Welcome to your Automated coop</p>
+		<li class="textbox"><span class="header"></span>
+		<p></p>
 		</li>
 		<li class="select"><select name="d">
 			<option value="1">Automatically Turn on/off Lights</option>
